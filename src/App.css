@@ -1,0 +1,89 @@
+@import url(//fonts.googleapis.com/css?family=Montserrat:300,500);
+.service-34 {
+  font-family: "Montserrat", sans-serif;
+  color: #8d97ad;
+  font-weight: 300;
+}
+
+.service-34 h1,
+.service-34 h2,
+.service-34 h3,
+.service-34 h4,
+.service-34 h5,
+.service-34 h6 {
+  color: #3e4555;
+}
+
+.service-34 .bg-light {
+  background-color: #f4f8fa !important;
+}
+
+.service-34 .text-muted {
+  color: #8d97ad !important;
+}
+
+.service-34 .badge {
+  line-height: 14px;
+}
+
+.service-34 .badge-info {
+  background: #188ef4;
+}
+
+.service-34 .op-8 {
+  opacity: 0.8;
+}
+
+.service-34 .card.card-shadow {
+  -webkit-box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+  box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+}
+
+.service-34.wrap-service34-box {
+  overflow: hidden;
+  position: relative;
+}
+
+.service-34.wrap-service34-box .left-image {
+  position: absolute;
+  left: -15px;
+  text-align: left;
+  top: 0px;
+}
+
+.service-34 .btn-success-gradiant {
+  background: #2cdd9b;
+  background: -webkit-linear-gradient(
+    legacy-direction(to right),
+    #2cdd9b 0%,
+    #1dc8cc 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#2cdd9b),
+    to(#1dc8cc)
+  );
+  background: -webkit-linear-gradient(left, #2cdd9b 0%, #1dc8cc 100%);
+  background: -o-linear-gradient(left, #2cdd9b 0%, #1dc8cc 100%);
+  background: linear-gradient(to right, #2cdd9b 0%, #1dc8cc 100%);
+  border: 0px;
+  color: #ffffff;
+}
+
+.service-34 .btn-md {
+  padding: 15px 45px;
+  font-size: 16px;
+}
+
+@media (max-width: 1023px) {
+  .service-34.wrap-service34-box .left-image {
+    position: relative;
+    top: -90px;
+  }
+}
+.container {
+  direction: rtl;
+  text-align: right;
+}

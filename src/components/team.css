@@ -1,0 +1,17 @@
+.list-class {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.imgSize {
+  height: 240px;
+  width: 240px;
+}
+
+.text-color {
+  color: #000
+}
+
+.bg-color {
+  background: #035397
+}

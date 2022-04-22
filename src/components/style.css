@@ -1,0 +1,28 @@
+.primary {
+  background-color: #00b4e5;
+}
+.active { 
+  background:#093952;
+border-radius: 10%;}
+
+.cert {
+  width: 100px;
+  height: 100px;
+}
+
+.card-pricing.popular {
+  z-index: 1;
+  border: 3px solid #007bff;
+}
+.card-pricing .list-unstyled li {
+  padding: .5rem 0;
+  color: #6c757d;
+}
+
+sup {
+  top: 0.5em;
+  position: relative;
+  font-size: 175%;
+  line-height: 0;
+  vertical-align: baseline;
+}
