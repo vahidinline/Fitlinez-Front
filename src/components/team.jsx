@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './team.css';
 import c from '../assets/PN_badge_L1-N_.webp';
 
 const Team = () => {
   const [teams, setTeams] = useState([]);
+  // useEffect(() => {
+  //   fetch('https://fitlinez-backend.herokuapp.com/team')
+  //     .then((response) => response.json())
+  //     .then((data) => setTeams(data));
+  // }, []);
+
   useEffect(() => {
-    fetch('https://fitlinez-backend.herokuapp.com/team')
-      .then((response) => response.json())
-      .then((data) => setTeams(data));
+    axios
+      .get('https://fitlinez-backend.herokuapp.com/team')
+      .then((res) => setTeams(res.data));
   }, []);
 
   return (

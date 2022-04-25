@@ -10,9 +10,8 @@ const Header = (props) => {
   const location = useLocation();
 
   const setUrl = location.pathname;
-  console.log(setUrl);
   const { currentUser, logout } = useAuth();
-  console.log();
+
   return (
     <nav
       className='navbar navbar-expand-lg navbar-light primary sticky-top'
@@ -88,6 +87,7 @@ const Header = (props) => {
               خروج
             </button>
           </div>
+          <span>{currentUser.name}</span>
         </>
       )}
     </nav>

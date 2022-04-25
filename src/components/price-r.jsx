@@ -9,7 +9,7 @@ const PriceR = () => {
         name='Nutrition Consultation'
         price='17'
         description='One-Hour Session'
-        url=''
+        url='https://buy.stripe.com/dR6aFU0N62h0aMU8wB'
         sign='€'
         featured
         oldPrice
@@ -29,7 +29,7 @@ const PriceR = () => {
         name='Nutrition Coaching'
         price='235'
         description='Tree Months, 12 sessions'
-        url=''
+        url='https://buy.stripe.com/4gwaFU3ZicVE3ks6ou'
         sign='€'
         featured={'Best Value'}
         oldPrice='291'

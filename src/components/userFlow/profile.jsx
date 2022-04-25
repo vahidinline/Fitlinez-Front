@@ -29,23 +29,21 @@ export default function Profile() {
 
   function updateUser(userData) {
     axios
-      .post('http://localhost:3000/updateProfile', userData)
-      .then((res) => {
-        alert(res);
-      })
+      .post('https://fitlinez-backend.herokuapp.com/updateProfile', userData)
+      .then((res) => {})
       .catch((e) => alert(e.message));
   }
 
   function retrieveData() {
     axios
-      .get('http://localhost:3000/updateProfile')
-      .then((res) => console.log(res));
+      .get('https://fitlinez-backend.herokuapp.com/updateProfile')
+      .then((res) => setUserData(res[0].data));
   }
 
   return (
     <div className='container'>
       <div className='row'>
-        <div className='col-sm'></div>
+        <div className='col-sm'>{userData.name}</div>
         <div className='col-sm'>
           <form
             onSubmit={async (e) => {
@@ -95,7 +93,7 @@ export default function Profile() {
           </form>
         </div>
         <div className='col-sm'>
-          {/* <button onClick={retrieveData}>Get Data</button> */}
+          <button onClick={() => alert(userData.age)}>Get Data</button>
         </div>
       </div>
     </div>

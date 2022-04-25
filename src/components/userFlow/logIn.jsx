@@ -102,7 +102,7 @@ const Login = () => {
                 ثبت نام{' '}
               </Link>
             </p>
-            <div className='form-group'>
+            {/* <div className='form-group'>
               <button
                 className='btn btn-danger btn-block'
                 onClick={() => signInWithGoogle()}
@@ -111,7 +111,7 @@ const Login = () => {
                 <FontAwesomeIcon icon={faGoogle} />
                 ورود با گوگل
               </button>
-            </div>
+            </div> */}
           </form>
         </div>
         <div className='col col-sm-2'></div>
