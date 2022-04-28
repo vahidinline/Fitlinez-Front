@@ -1,22 +1,33 @@
-import React, { Component, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from './authContent';
 import Input from '../input';
+import { AlertContainer, alert } from 'react-custom-alert';
+import 'react-custom-alert/dist/index.css';
+import { useNavigate } from 'react-router-dom';
+
 export default function Profile() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+
   const { currentUser } = useAuth();
   //console.log(JSON.stringify(currentUser, null, 2));
   //const email = currentUser.email;
-  const initialUserData = {};
 
   const email = currentUser ? currentUser.email : 'Email';
   const uid = currentUser ? currentUser.uid : 'uid';
+  const [showForm, setShowForm] = useState(true);
   const [userData, setUserData] = useState({
     name: '',
     email: email,
     age: '',
+    height: '',
+    target: '',
+    comment: '',
     gender: '',
     weight: '',
     phone: '',
+    activity: '',
     uid: uid,
   });
   const handleInput = (e) => {
@@ -30,71 +41,114 @@ export default function Profile() {
   function updateUser(userData) {
     axios
       .post('https://fitlinez-backend.herokuapp.com/updateProfile', userData)
-      .then((res) => {})
-      .catch((e) => alert(e.message));
+      .then((res) => {
+        setUserData(res);
+        alert({ message: 'success', type: 'success' });
+        setIsSubmitting(true);
+        navigate('/');
+      })
+      .catch((e) => {});
   }
-
-  function retrieveData() {
+  function updateData(currentUser) {
+    console.log(email);
     axios
-      .get('https://fitlinez-backend.herokuapp.com/updateProfile')
-      .then((res) => setUserData(res[0].data));
+      .put('https://fitlinez-backend.herokuapp.com/updateProfile', currentUser)
+      .then((res) => {
+        console.log(res.data[0].email);
+        if (res.data[0].email == email) setShowForm(false);
+      });
   }
+  useEffect(() => {
+    updateData(uid);
+  }, []);
 
   return (
     <div className='container'>
       <div className='row'>
-        <div className='col-sm'>{userData.name}</div>
-        <div className='col-sm'>
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              updateUser(userData).then((res) => {
-                console.log('success', res).catch((e) => {
-                  alert(e);
+        {showForm && (
+          <div className='col-sm'>
+            <h1 className='m-5 text-center'>فرم اطلاعات کاربری</h1>
+            <span className='text-center text-warning'>
+              {' '}
+              تمامی موارد ضروری هستند
+            </span>
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                updateUser(userData).then((res) => {
+                  console.log(res).catch((e) => {
+                    alert(e);
+                  });
                 });
-              });
-            }}
-          >
-            <Input
-              name='name'
-              label='نام'
-              Value={userData.name}
-              onChange={handleInput}
-            />
-            <Input
-              name='age'
-              label='سن'
-              Value={userData.age}
-              onChange={handleInput}
-            />
-            <Input
-              name='weight'
-              label='وزن'
-              Value={userData.weight}
-              onChange={handleInput}
-            />
-            <Input
-              name='gender'
-              label='جنسیت'
-              Value={userData.gender}
-              onChange={handleInput}
-            />
-            <Input
-              name='phone'
-              label='تلفن'
-              Value={userData.phone}
-              onChange={handleInput}
-            />
-            <div className='form-group'>
-              <button className='btn btn-primary btn-block' type='submit'>
-                Update Profile
-              </button>
-            </div>
-          </form>
-        </div>
-        <div className='col-sm'>
-          <button onClick={() => alert(userData.age)}>Get Data</button>
-        </div>
+              }}
+            >
+              <Input
+                required
+                name='name'
+                label='*نام'
+                value={userData.name}
+                onChange={handleInput}
+              />
+              <Input
+                required
+                name='age'
+                label='*سن'
+                value={userData.age}
+                onChange={handleInput}
+              />
+              <Input
+                required
+                name='weight'
+                label='*وزن'
+                value={userData.weight}
+                onChange={handleInput}
+              />
+              <Input
+                required
+                name='height'
+                label='*قد'
+                value={userData.height}
+                onChange={handleInput}
+              />
+
+              <Input
+                required
+                name='gender'
+                label='*جنسیت'
+                placeholder='خانم یا آقا'
+                value={userData.gender}
+                onChange={handleInput}
+              />
+              <Input
+                required
+                name='target'
+                label='*هدف تناسب اندامی'
+                placeholder='کاهش وزن، افزایش وزن یا بادی کامپوزیشن'
+                value={userData.target}
+                onChange={handleInput}
+              />
+              <Input
+                required
+                name='activity'
+                label='*میزان تحرک '
+                placeholder='زیر 3 روز در هفته،3 تا 5 روز در هفته یا بالای 5 روز در هفته'
+                value={userData.activity}
+                onChange={handleInput}
+              />
+              <Input
+                name='comment'
+                label='هدف شما از ثبت نام در این دوره چیست '
+                value={userData.comment}
+                onChange={handleInput}
+              />
+              <div className='form-group'>
+                <button className='btn btn-primary btn-block' type='submit'>
+                  ثبت اطلاعات
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );

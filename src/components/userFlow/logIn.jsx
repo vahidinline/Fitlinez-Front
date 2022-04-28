@@ -31,7 +31,7 @@ const Login = () => {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
-              console.log(email, password);
+              //console.log(email, password);
               setIsSubmitting(true);
               login(email, password)
                 .then((res) => navigate('/price'))
@@ -97,8 +97,8 @@ const Login = () => {
                 بازیابی رمز عبور
               </Link>
             </p>
-            <p className='text-center '>
-              <Link to='/signup' className='btn text-dark'>
+            <p className='text-center btn byn-block btn-success'>
+              <Link to='/signup' className='btn text-light'>
                 ثبت نام{' '}
               </Link>
             </p>

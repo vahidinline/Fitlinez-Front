@@ -40,7 +40,7 @@ const Header = (props) => {
               صفحه اصلی <span className='sr-only'></span>
             </Link>
           </li>
-          <div class='divider'></div>
+          <div className='divider'></div>
           <li className={`nav-item ${setUrl === '/price' ? 'active' : ''}`}>
             <Link className='nav-link text-light h6' to='/price'>
               دوره ها{' '}

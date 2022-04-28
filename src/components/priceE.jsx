@@ -8,14 +8,15 @@ const PriceE = () => {
         id='One'
         name='مشاوره تغذیه'
         price='۵۰۰،۰۰۰'
-        description='یک جلسه ۱ ساعته'
+        description='یک جلسه نیم ساعته'
         line1='مشاوره تغذیه و لایف استایل'
-        line2='پاسخگویی به سوالات برای یکساعت بصورت ویدئو کال'
+        line2='پاسخگویی به سوالات برای سی دقیقه بصورت ویدئو کال'
         line3=''
         url='https://zarinp.al/423697'
         sign='تومان'
         featured
         oldPrice
+        disabled='false'
       />
       <Package
         id='Two'
@@ -29,6 +30,7 @@ const PriceE = () => {
         line3='چهار جلسه نیم ساعته در ماه بصورت ویدئو کال '
         featured
         oldPrice
+        disabled='false'
       />
       <Package
         id='Three'
@@ -43,6 +45,7 @@ const PriceE = () => {
         line4='دوره کوچینگ تغذیه به مدت سه ماه به ارزش ۸،۷۰۰،۰۰۰ تومان. پرداختی شما ۶،۹۷۵،۰۰ تومان'
         featured={'بهترین قیمت'}
         oldPrice=' ارزش واقعی دوره: ۸,۷۰۰,۰۰۰ تومان '
+        disabled='false'
       />
       <Package
         id='Four'
@@ -54,6 +57,7 @@ const PriceE = () => {
         line1='طراحی برنامه تمرینی توسط مربی بدنسازی بصورت اختصاصی با توجه به هدف و جسمانی'
         featured
         oldPrice
+        disabled='true'
       />
     </>
   );

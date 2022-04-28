@@ -21,9 +21,9 @@ const Footer = () => {
           style={{ direction: 'rtl', background: '#00B4E5' }}
         >
           <div className='col-md-4'>
-            <section class='mb-4'>
+            <section className='mb-4'>
               <a
-                class='btn btn-link btn-floating btn-lg text-dark m-1'
+                className='btn btn-link btn-floating btn-lg text-dark m-1'
                 href='https://twitter.com/azarshafieii'
                 role='button'
                 data-mdb-ripple-color='dark'
@@ -31,24 +31,24 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
               <a
-                class='btn btn-link btn-floating btn-lg text-dark m-1'
-                href='https://twitter.com/azarshafieii'
+                className='btn btn-link btn-floating btn-lg text-dark m-1'
+                href=''
                 role='button'
                 data-mdb-ripple-color='dark'
               >
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
               <a
-                class='btn btn-link btn-floating btn-lg text-dark m-1'
-                href='https://twitter.com/azarshafieii'
+                className='btn btn-link btn-floating btn-lg text-dark m-1'
+                href='https://instagram.com/fit.linez'
                 role='button'
                 data-mdb-ripple-color='dark'
               >
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
               <a
-                class='btn btn-link btn-floating btn-lg text-dark m-1'
-                href='https://twitter.com/azarshafieii'
+                className='btn btn-link btn-floating btn-lg text-dark m-1'
+                href='https://t.me/fitlinez'
                 role='button'
                 data-mdb-ripple-color='dark'
               >

@@ -8,11 +8,12 @@ const PriceR = () => {
         id='One'
         name='Nutrition Consultation'
         price='17'
-        description='One-Hour Session'
+        description='30-minute Session'
         url='https://buy.stripe.com/dR6aFU0N62h0aMU8wB'
         sign='€'
         featured
         oldPrice
+        disabled='false'
       />
       <Package
         id='Two'
@@ -23,6 +24,7 @@ const PriceR = () => {
         sign='€'
         featured
         oldPrice
+        disabled='false'
       />
       <Package
         id='Three'
@@ -33,6 +35,7 @@ const PriceR = () => {
         sign='€'
         featured={'Best Value'}
         oldPrice='291'
+        disabled='false'
       />
       <Package
         id='Four'
@@ -42,6 +45,7 @@ const PriceR = () => {
         url=''
         sign='€'
         featured
+        disabled='true'
       />
     </>
   );

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './authContent';
+import { AlertContainer, alert } from 'react-custom-alert';
+import 'react-custom-alert/dist/index.css';
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -8,7 +10,19 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { register } = useAuth();
-
+  function errorFunc(error) {
+    const m = error.message;
+    if (m === 'Firebase: Error (auth/email-already-in-use).')
+      alert({
+        message: 'The email address is already in use by another account.',
+        type: 'error',
+      });
+    if (m === 'auth/invalid-email')
+      alert({
+        message: 'The email address is badly formatted.',
+        type: 'error',
+      });
+  }
   return (
     <div className='container' style={{ direction: 'ltr' }}>
       <div className='row'>
@@ -23,8 +37,9 @@ export default function SignUp() {
               setIsSubmitting(true);
               register(email, password)
                 .then((res) => navigate('/price'))
-                .catch((error) => console.log(error.message))
-                .finally(() => setIsSubmitting(false));
+                .catch((error) =>
+                  errorFunc(error).finally(() => setIsSubmitting(false))
+                );
             }}
           >
             <div className='form-group'>
