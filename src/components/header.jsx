@@ -52,13 +52,13 @@ const Header = (props) => {
             </Link>
           </li>
 
-          {!currentUser && (
+          {/* {!currentUser && (
             <li className={`nav-item ${setUrl === '/login' ? 'active' : ''}`}>
               <Link className='nav-link text-light h6' to='/login'>
                 ورود
               </Link>
             </li>
-          )}
+          )} */}
           <i className='fa fa-instagram' aria-hidden='true'></i>
           {currentUser && (
             <>
@@ -73,7 +73,7 @@ const Header = (props) => {
           )}
         </ul>
       </div>
-      {currentUser && (
+      {/* {currentUser && (
         <>
           <div className='d-flex'>
             <button
@@ -89,7 +89,7 @@ const Header = (props) => {
           </div>
           <span>{currentUser.name}</span>
         </>
-      )}
+      )} */}
     </nav>
   );
 };

@@ -34,8 +34,8 @@ const Login = () => {
               //console.log(email, password);
               setIsSubmitting(true);
               login(email, password)
-                .then((res) => navigate('/price'))
-                .catch((error) => alert(error.message))
+                .then((res) => navigate('/admin'))
+                .catch((error) => alert('Access Denied'))
                 .finally(() => mounted.current && setIsSubmitting(false));
             }}
           >
@@ -92,26 +92,16 @@ const Login = () => {
                 ورود
               </button>
             </div>
-            <p className='text-center'>
+            {/* <p className='text-center'>
               <Link to='/forgotpassword' className='btn text-dark'>
                 بازیابی رمز عبور
               </Link>
-            </p>
-            <p className='text-center btn byn-block btn-success'>
+            </p> */}
+            {/* <p className='text-center btn byn-block btn-success'>
               <Link to='/signup' className='btn text-light'>
                 ثبت نام{' '}
               </Link>
-            </p>
-            {/* <div className='form-group'>
-              <button
-                className='btn btn-danger btn-block'
-                onClick={() => signInWithGoogle()}
-                type='submit'
-              >
-                <FontAwesomeIcon icon={faGoogle} />
-                ورود با گوگل
-              </button>
-            </div> */}
+            </p> */}
           </form>
         </div>
         <div className='col col-sm-2'></div>

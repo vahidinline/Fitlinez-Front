@@ -69,16 +69,16 @@ const Package = (props) => {
               <li>{props.line3}</li>
               <li>{props.line4}</li>
             </ul>
-            {currentUser && (
-              <a
-                href={props.url}
-                type='button'
-                className='btn btn-outline-success mb-3'
-              >
-                Order now
-              </a>
-            )}
-            {!currentUser && (
+
+            <a
+              href={props.url}
+              type='button'
+              className='btn btn-outline-success mb-3'
+            >
+              Order now
+            </a>
+
+            {/* {!currentUser && (
               <Link
                 to='/login'
                 type='button'
@@ -87,7 +87,7 @@ const Package = (props) => {
               >
                 Register or Login
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       </div>

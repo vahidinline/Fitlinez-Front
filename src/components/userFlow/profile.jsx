@@ -1,155 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useAuth } from './authContent';
-import Input from '../input';
-import { AlertContainer, alert } from 'react-custom-alert';
+import React, { Component, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import 'react-custom-alert/dist/index.css';
-import { useNavigate } from 'react-router-dom';
+
+import Form from './form';
 
 export default function Profile() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();
+  const search = useLocation().search;
 
-  const { currentUser } = useAuth();
-  //console.log(JSON.stringify(currentUser, null, 2));
-  //const email = currentUser.email;
-
-  const email = currentUser ? currentUser.email : 'Email';
-  const uid = currentUser ? currentUser.uid : 'uid';
-  const [showForm, setShowForm] = useState(true);
-  const [userData, setUserData] = useState({
-    name: '',
-    email: email,
-    age: '',
-    height: '',
-    target: '',
-    comment: '',
-    gender: '',
-    weight: '',
-    phone: '',
-    activity: '',
-    uid: uid,
-  });
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-  };
-
-  function updateUser(userData) {
-    axios
-      .post('https://fitlinez-backend.herokuapp.com/updateProfile', userData)
-      .then((res) => {
-        setUserData(res);
-        alert({ message: 'success', type: 'success' });
-        setIsSubmitting(true);
-        navigate('/');
-      })
-      .catch((e) => {});
-  }
-  function updateData(currentUser) {
-    console.log(email);
-    axios
-      .put('https://fitlinez-backend.herokuapp.com/updateProfile', currentUser)
-      .then((res) => {
-        console.log(res.data[0].email);
-        if (res.data[0].email == email) setShowForm(false);
-      });
-  }
+  const token = new URLSearchParams(search).get('Status');
+  console.log(token);
+  const [isShow, setIsShow] = useState(false);
   useEffect(() => {
-    updateData(uid);
+    if (token === 'OK') {
+      setIsShow(true);
+    }
   }, []);
 
-  return (
-    <div className='container'>
-      <div className='row'>
-        {showForm && (
-          <div className='col-sm'>
-            <h1 className='m-5 text-center'>فرم اطلاعات کاربری</h1>
-            <span className='text-center text-warning'>
-              {' '}
-              تمامی موارد ضروری هستند
-            </span>
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                updateUser(userData).then((res) => {
-                  console.log(res).catch((e) => {
-                    alert(e);
-                  });
-                });
-              }}
-            >
-              <Input
-                required
-                name='name'
-                label='*نام'
-                value={userData.name}
-                onChange={handleInput}
-              />
-              <Input
-                required
-                name='age'
-                label='*سن'
-                value={userData.age}
-                onChange={handleInput}
-              />
-              <Input
-                required
-                name='weight'
-                label='*وزن'
-                value={userData.weight}
-                onChange={handleInput}
-              />
-              <Input
-                required
-                name='height'
-                label='*قد'
-                value={userData.height}
-                onChange={handleInput}
-              />
-
-              <Input
-                required
-                name='gender'
-                label='*جنسیت'
-                placeholder='خانم یا آقا'
-                value={userData.gender}
-                onChange={handleInput}
-              />
-              <Input
-                required
-                name='target'
-                label='*هدف تناسب اندامی'
-                placeholder='کاهش وزن، افزایش وزن یا بادی کامپوزیشن'
-                value={userData.target}
-                onChange={handleInput}
-              />
-              <Input
-                required
-                name='activity'
-                label='*میزان تحرک '
-                placeholder='زیر 3 روز در هفته،3 تا 5 روز در هفته یا بالای 5 روز در هفته'
-                value={userData.activity}
-                onChange={handleInput}
-              />
-              <Input
-                name='comment'
-                label='هدف شما از ثبت نام در این دوره چیست '
-                value={userData.comment}
-                onChange={handleInput}
-              />
-              <div className='form-group'>
-                <button className='btn btn-primary btn-block' type='submit'>
-                  ثبت اطلاعات
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  return <>{isShow ? <Form /> : <h1>Access Denied</h1>};</>;
 }

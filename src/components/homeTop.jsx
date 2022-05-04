@@ -72,20 +72,16 @@ const HomeTop = () => {
                           او ماهیگیری یاد دهید!
                         </div>
                       </p>
-                      <div className='col-6 border-right'>
-                        <button
+                      <div className='col-12 border-right'>
+                        <Link
                           type='button'
-                          className='btn btn-light btn-lg btn-block'
+                          to='/price'
+                          className='btn btn-outline-success btn-lg btn-block text-light'
                         >
-                          <Link
-                            className='text-decoration-none text-dark'
-                            to='/signup'
-                          >
-                            ثبت نام
-                          </Link>
-                        </button>
+                          دوره ها
+                        </Link>
                       </div>
-                      <div className='col-6 text-right border-left'>
+                      {/* <div className='col-6 text-right border-left'>
                         <button
                           type='button'
                           className='btn btn-primary btn-lg btn-block'
@@ -98,7 +94,7 @@ const HomeTop = () => {
                             ورود
                           </Link>
                         </button>
-                      </div>
+                      </div> */}
                       <div className='col-lg-12 mt-3'>
                         <Link
                           className='btn btn-success-gradiant btn-md btn-block'

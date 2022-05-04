@@ -33,6 +33,7 @@ const AdminHome = () => {
             <th className='col'>جنسیت</th>
             <th className='col'>وزن</th>
             <th className='col'>توضیحات</th>
+            <th className='col'>پرداخت شده؟</th>
           </tr>
         </thead>
 
@@ -42,11 +43,13 @@ const AdminHome = () => {
               <td>{d.name}</td>
               <td>{d.age}</td>
               <td>{d.date}</td>
+              <td>{d.activity}</td>
               <td>{d.height}</td>
               <td>{d.target}</td>
               <td>{d.gender}</td>
               <td>{d.weight}</td>
               <td>{d.comment}</td>
+              <td>{d.isPaid}</td>
             </tr>
           </tbody>
         ))}
