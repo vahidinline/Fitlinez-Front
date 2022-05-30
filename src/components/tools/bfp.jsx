@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Joi from 'joi-browser';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReactSpeedometer from 'react-d3-speedometer';
 
 import Input from '../input';
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryScatter,
-  VictoryAxis,
-  VictoryTooltip,
-  VictoryLabel,
-} from 'victory';
-import axios from 'axios';
 import fitnessCalculatorFunctions from 'fitness-calculator';
 export default function Bfp() {
   const handleInput = (e) => {
@@ -32,7 +21,7 @@ export default function Bfp() {
     hip: 90,
   });
 
-  const { gender, age, height, weight, neck, waist, hip } = userData;
+  const { gender, height, weight, neck, waist, hip } = userData;
   const myBFP = fitnessCalculatorFunctions.BFP(
     gender,
     Number(height),

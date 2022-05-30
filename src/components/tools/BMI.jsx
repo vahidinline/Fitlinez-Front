@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactSpeedometer from 'react-d3-speedometer';
 import { Link } from 'react-router-dom';
