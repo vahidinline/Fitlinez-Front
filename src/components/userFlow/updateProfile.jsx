@@ -1,10 +1,10 @@
-import React, { Component, useState } from 'react';
-import axios from 'axios';
-import { useAuth } from './authContent';
-import Input from '../input';
-import { AlertContainer, alert } from 'react-custom-alert';
-import 'react-custom-alert/dist/index.css';
-import { useNavigate } from 'react-router-dom';
+import React, { Component, useState } from "react";
+import axios from "axios";
+import { useAuth } from "./authContent";
+import Input from "../input";
+import { AlertContainer, alert } from "react-custom-alert";
+import "react-custom-alert/dist/index.css";
+import { useNavigate } from "react-router-dom";
 
 export default function UpdateProfile() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,19 +14,19 @@ export default function UpdateProfile() {
   //console.log(JSON.stringify(currentUser, null, 2));
   //const email = currentUser.email;
 
-  const email = currentUser ? currentUser.email : 'Email';
-  const uid = currentUser ? currentUser.uid : 'uid';
+  const email = currentUser ? currentUser.email : "Email";
+  const uid = currentUser ? currentUser.uid : "uid";
   const [userData, setUserData] = useState({
-    name: 'v',
-    email: '',
-    age: '',
-    height: '1',
-    target: '2',
-    comment: '3',
-    gender: 'f',
-    weight: 'f',
-    phone: '',
-    activity: 'f',
+    name: "v",
+    email: "",
+    age: "",
+    height: "1",
+    target: "2",
+    comment: "3",
+    gender: "f",
+    weight: "f",
+    phone: "",
+    activity: "f",
     uid: uid,
   });
   const handleInput = (e) => {
@@ -39,19 +39,19 @@ export default function UpdateProfile() {
 
   function updateUser(userData) {
     axios
-      .post('https://fitlinez-backend.herokuapp.com/updateProfile', userData)
+      .post("https://fitlinez-backend.herokuapp.com/updateProfile", userData)
       .then((res) => {
         setUserData(res);
-        alert({ message: 'success', type: 'success' });
+        alert({ message: "success", type: "success" });
         setIsSubmitting(true);
-        navigate('/');
+        navigate("/");
       })
       .catch((e) => {});
   }
 
   function retrieveData() {
     axios
-      .get('https://fitlinez-backend.herokuapp.com/updateProfile')
+      .get("https://fitlinez-backend.herokuapp.com/updateProfile")
       .then((res) => console.log(res));
   }
 
@@ -61,7 +61,7 @@ export default function UpdateProfile() {
         <div className='col-sm'>
           <h1 className='m-5 text-center'>فرم اطلاعات کاربری</h1>
           <span className='text-center text-warning'>
-            {' '}
+            {" "}
             تمامی موارد ضروری هستند
           </span>
           <form
@@ -73,8 +73,7 @@ export default function UpdateProfile() {
                   alert(e);
                 });
               });
-            }}
-          >
+            }}>
             <Input
               required
               name='name'
@@ -111,14 +110,28 @@ export default function UpdateProfile() {
               onChange={handleInput}
             />
 
-            <Input
+            {/* <Input
               required
               name='gender'
               label='*جنسیت'
               placeholder='خانم یا آقا'
               value={userData.gender}
               onChange={handleInput}
-            />
+            /> */}
+            <div className='form-group'>
+              <select
+                className='form-control'
+                name='gender'
+                onChange={handleInput}
+                value={userData.gender}>
+                <option
+                  value='
+male'>
+                  male
+                </option>
+                <option value='female'>female</option>
+              </select>
+            </div>
             <Input
               required
               name='target'
@@ -149,8 +162,7 @@ export default function UpdateProfile() {
                     <span
                       className='spinner-grow spinner-grow-sm'
                       role='false'
-                      aria-hidden='false'
-                    ></span>
+                      aria-hidden='false'></span>
                     <span className='sr-only'>Loading...</span>
                   </>
                 )}

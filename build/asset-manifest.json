@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.4e29f9e9.css",
-    "main.js": "/static/js/main.c5a9b370.js",
+    "main.js": "/static/js/main.87481de1.js",
     "static/media/banner.png": "/static/media/banner.3b13b7e54acf9c88e699.png",
     "static/media/logo.png": "/static/media/logo.0a430743e2150ca81af4.png",
     "static/media/about.webp": "/static/media/about.1702fa52ecf5d4316105.webp",
@@ -11,10 +11,10 @@
     "static/media/PN_badge_L1-N_.webp": "/static/media/PN_badge_L1-N_.fc3bb1ff2ed3ba8843d0.webp",
     "index.html": "/index.html",
     "main.4e29f9e9.css.map": "/static/css/main.4e29f9e9.css.map",
-    "main.c5a9b370.js.map": "/static/js/main.c5a9b370.js.map"
+    "main.87481de1.js.map": "/static/js/main.87481de1.js.map"
   },
   "entrypoints": [
     "static/css/main.4e29f9e9.css",
-    "static/js/main.c5a9b370.js"
+    "static/js/main.87481de1.js"
   ]
 }

@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ModalView from "./modal";
 const AdminHome = () => {
-  const [data, setData] = useState(['']);
-  // function deleteData(){
-  //   axios.
-  // }
+  const [data, setData] = useState([""]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const [modalData, setModalData] = useState();
+  const handleShow = (d) => {
+    setShow(true);
+    setModalData(d);
+  };
   function updateData() {
     axios
-      .get('https://fitlinez-backend.herokuapp.com/updateProfile')
+      .get("https://fitlinez-backend.herokuapp.com/updateProfile")
       .then((res) => {
         setData(res.data);
-        console.log(res.data[0].date);
+        console.log(typeof res.data[0].date);
       });
   }
   useEffect(() => {
@@ -25,15 +29,8 @@ const AdminHome = () => {
         <thead className='thead-dark'>
           <tr>
             <th className='col'>نام</th>
-            <th className='col'>سن</th>
             <th className='col'>تاریخ عضویت</th>
-            <th className='col'>فعالیت</th>
-            <th className='col'>قد</th>
-            <th className='col'>هدف</th>
-            <th className='col'>جنسیت</th>
-            <th className='col'>وزن</th>
-            <th className='col'>توضیحات</th>
-            <th className='col'>پرداخت شده؟</th>
+            <th>مشاهده جزییات</th>
           </tr>
         </thead>
 
@@ -41,19 +38,28 @@ const AdminHome = () => {
           <tbody>
             <tr>
               <td>{d.name}</td>
-              <td>{d.age}</td>
+
               <td>{d.date}</td>
-              <td>{d.activity}</td>
-              <td>{d.height}</td>
-              <td>{d.target}</td>
-              <td>{d.gender}</td>
-              <td>{d.weight}</td>
-              <td>{d.comment}</td>
-              <td>{d.isPaid}</td>
+
+              <td>
+                <button
+                  className='btn btn-success'
+                  onClick={() => handleShow(d)}
+                  variant='primary'>
+                  Details
+                </button>
+              </td>
             </tr>
           </tbody>
         ))}
       </table>
+      {modalData && (
+        <ModalView
+          modalData={modalData}
+          show={show}
+          handleClose={handleClose}
+        />
+      )}
     </div>
   );
 };
