@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Input from '../input';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
 import './style.css';
 export default function Calories() {
   const [result, setResult] = useState('');
-  console.log(result.goals);
   const [userData, setUserData] = useState({
     age: 0,
     height: 0,
@@ -14,17 +12,16 @@ export default function Calories() {
     weight: 0,
     activity: '',
   });
-
   useEffect(() => {
     axios
       .request({
         method: 'GET',
         url: 'https://fitness-calculator.p.rapidapi.com/dailycalorie',
         params: {
-          age: userData.age,
+          age: parseInt(userData.age),
           gender: userData.gender,
-          height: userData.height,
-          weight: userData.weight,
+          height: parseInt(userData.height),
+          weight: parseInt(userData.weight),
           activitylevel: userData.activity,
         },
         headers: {
@@ -55,24 +52,37 @@ export default function Calories() {
         <div className="col-sm-6">
           {result && (
             <div class="container mt-5">
-              <div class="notice notice-success">
-                <strong>متابولیسم پایه </strong> کالری: {Math.round(result.BMR)}
+              <div class="notice notice-success h5">
+                <strong>کالری تقریبی متابولیسم پایه </strong>
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.BMR)}
+                </span>
               </div>
-              <div class="notice notice-danger">
-                <strong> تثبیت وزن</strong> کالری:{' '}
-                {Math.round(result.goals['maintain weight'])}
+              <div class="notice notice-info h5">
+                <strong>کالری تقریبی تثبیت وزن</strong>
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.goals['maintain weight'])}
+                </span>
               </div>
-              <div class="notice notice-info">
-                <strong>کاهش وزن - یک کیلو در هفته</strong> کالری:{' '}
-                {Math.round(result.goals['Extreme weight loss']['calory'])}
+              <div class="notice notice-danger h5">
+                <strong>کالری تقریبی برای کاهش وزن ۱ کیلو در هفته</strong>
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.goals['Extreme weight loss']['calory'])}
+                </span>
+                <div class="notice notice-danger text-danger">
+                  توصیه میشود یک فرد بالغ کمتر از ۱۲۰۰ کالری در روز مصرف نکند
+                </div>
               </div>
-              <div class="notice notice-warning">
-                <strong>کاهش وزن - ۱/۴ کیلو در هفته</strong> کالری:{' '}
-                {Math.round(result.goals['Mild weight loss']['calory'])}
+              <div class="notice notice-warning h5">
+                <strong>کالری تقریبی برای کاهش ۲۵۰ گرم در هفته</strong>
+
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.goals['Mild weight loss']['calory'])}
+                </span>
               </div>
 
-              <div class="notice notice-sm">
-                <strong>نکته:</strong> برای محاسبه دقیقتر به متخصص تفذیه مراجعه
+              <div class="notice notice-sm h5">
+                <strong>نکته:</strong> برای محاسبه دقیقتر به متخصص تغدیه مراجعه
                 کنید
               </div>
             </div>
@@ -97,7 +107,7 @@ export default function Calories() {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
-              // Calc();
+              alert('کالری پایه کمتر از ۱۲۰۰ برای بزرگ');
             }}>
             <Input required name="weight" label="*وزن" onChange={handleInput} />
             <Input
