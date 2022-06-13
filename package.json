@@ -16,7 +16,6 @@
     "axios": "^0.18.1",
     "bootstrap": "^5.1.3",
     "fitness-calculator": "^1.1.0",
-    "joi-browser": "13.4",
     "mongoose": "^5.13.14",
     "react": "^17.0.2",
     "react-bootstrap": "^2.4.0",
