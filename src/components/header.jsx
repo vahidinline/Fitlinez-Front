@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './style.css';
-import { useAuth } from './userFlow/authContent';
+//import { useAuth } from './userFlow/authContent';
 
 const Header = (props) => {
   const location = useLocation();
 
   const setUrl = location.pathname;
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
 
   return (
     <nav
@@ -51,44 +51,8 @@ const Header = (props) => {
               محاسبه کالری
             </Link>
           </li>
-
-          {/* {!currentUser && (
-            <li className={`nav-item ${setUrl === '/login' ? 'active' : ''}`}>
-              <Link className='nav-link text-light h6' to='/login'>
-                ورود
-              </Link>
-            </li>
-          )} */}
-          <i className="fa fa-instagram" aria-hidden="true"></i>
-          {currentUser && (
-            <>
-              <li
-                className={`nav-item ${setUrl === '/profile' ? 'active' : ''}`}>
-                <Link className="nav-link text-light" to="/profile">
-                  پروفایل
-                </Link>
-              </li>
-            </>
-          )}
         </ul>
       </div>
-      {/* {currentUser && (
-        <>
-          <div className='d-flex'>
-            <button
-              className='btn btn-danger'
-              onClick={(e) => {
-                e.preventDefault();
-                logout().then(() => navigate('/login'));
-              }}
-              type='submit'
-            >
-              خروج
-            </button>
-          </div>
-          <span>{currentUser.name}</span>
-        </>
-      )} */}
     </nav>
   );
 };
