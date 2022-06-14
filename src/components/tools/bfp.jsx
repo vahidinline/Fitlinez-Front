@@ -59,21 +59,6 @@ export default function Bfp() {
               textColor={'#d8dee9'}
             />
           )}
-          <div
-            className="btn-group"
-            style={{ direction: 'ltr' }}
-            role="group"
-            aria-label="Basic example">
-            <Link to="/bmi" type="button" class="btn btn-primary">
-              محاسبه BMI
-            </Link>
-            <Link to="/calories" type="button" class="btn btn-success">
-              محاسبه کالری نقصان
-            </Link>
-            <Link to="/bfp" type="button" class="btn btn-info">
-              محاسبه چربی بدن{' '}
-            </Link>
-          </div>
         </div>
         <div className="col-sm-6">
           <form
