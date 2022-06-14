@@ -4,14 +4,15 @@ import axios from 'axios';
 import './style.css';
 export default function Calories() {
   const [result, setResult] = useState('');
-  const [cta, setCta] = useState('');
-  console.log(cta);
+
   const [userData, setUserData] = useState({
     age: 0,
     height: 0,
     gender: '',
     weight: 0,
     activity: '',
+    email: '',
+    name: '',
   });
   useEffect(() => {
     axios
@@ -46,68 +47,74 @@ export default function Calories() {
       [name]: value,
     });
   };
-
+  useEffect(
+    (result) => {
+      axios
+        .post('https://fitlinez-backend.herokuapp.com/cta', {
+          userData,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((e) => {});
+    },
+    [result]
+  );
   return (
     <div className="container">
       <div className="row">
-        {cta && (
-          <div className="col-sm-6">
-            {result && (
-              <div class="container mt-5">
-                <div class="notice notice-success h5">
-                  <strong>کالری تقریبی متابولیسم پایه </strong>
-                  <span className="float-left badge badge-primary">
-                    {Math.round(result.BMR)}
-                  </span>
-                </div>
-                <div class="notice notice-info h5">
-                  <strong>کالری تقریبی تثبیت وزن</strong>
-                  <span className="float-left badge badge-primary">
-                    {Math.round(result.goals['maintain weight'])}
-                  </span>
-                </div>
-                <div class="notice notice-danger h5">
-                  <strong>کالری تقریبی برای کاهش وزن ۱ کیلو در هفته</strong>
-                  <span className="float-left badge badge-primary">
-                    {Math.round(result.goals['Extreme weight loss']['calory'])}
-                  </span>
-                  <div class="notice notice-danger text-danger">
-                    توصیه میشود یک فرد بالغ کمتر از ۱۲۰۰ کالری در روز مصرف نکند
-                  </div>
-                </div>
-                <div class="notice notice-warning h5">
-                  <strong>کالری تقریبی برای کاهش ۲۵۰ گرم در هفته</strong>
-
-                  <span className="float-left badge badge-primary">
-                    {Math.round(result.goals['Mild weight loss']['calory'])}
-                  </span>
-                </div>
-
-                <div class="notice notice-sm h5">
-                  <strong>نکته:</strong> برای محاسبه دقیقتر به متخصص تغدیه
-                  مراجعه کنید
+        <div className="col-sm-6">
+          {result && (
+            <div class="container mt-5">
+              <div class="notice notice-success h5">
+                <strong>کالری تقریبی متابولیسم پایه </strong>
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.BMR)}
+                </span>
+              </div>
+              <div class="notice notice-info h5">
+                <strong>کالری تقریبی تثبیت وزن</strong>
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.goals['maintain weight'])}
+                </span>
+              </div>
+              <div class="notice notice-danger h5">
+                <strong>کالری تقریبی برای کاهش وزن ۱ کیلو در هفته</strong>
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.goals['Extreme weight loss']['calory'])}
+                </span>
+                <div class="notice notice-danger text-danger">
+                  توصیه میشود یک فرد بالغ کمتر از ۱۲۰۰ کالری در روز مصرف نکند
                 </div>
               </div>
-            )}
-          </div>
-        )}
+              <div class="notice notice-warning h5">
+                <strong>کالری تقریبی برای کاهش ۲۵۰ گرم در هفته</strong>
+
+                <span className="float-left badge badge-primary">
+                  {Math.round(result.goals['Mild weight loss']['calory'])}
+                </span>
+              </div>
+
+              <div class="notice notice-sm h5">
+                <strong>نکته:</strong> برای محاسبه دقیقتر به متخصص تغدیه مراجعه
+                کنید
+              </div>
+            </div>
+          )}
+        </div>
+
         <div className="col-sm-6 mt-3">
           <form
             onSubmit={async (e) => {
               e.preventDefault();
               alert('کالری پایه کمتر از ۱۲۰۰ برای بزرگ');
             }}>
-            <Input
-              required
-              name="name"
-              label="*نام"
-              onChange={(e) => setCta(e.target.value)}
-            />
+            <Input required name="name" label="*نام" onChange={handleInput} />
             <Input
               required
               name="email"
               label="*ایمیل"
-              onChange={(e) => setCta(e.target.value)}
+              onChange={handleInput}
             />
             <Input required name="weight" label="*وزن" onChange={handleInput} />
             <Input
