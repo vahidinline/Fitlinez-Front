@@ -6,15 +6,35 @@ export default function Calories() {
   const [result, setResult] = useState('');
 
   const [userData, setUserData] = useState({
-    age: 0,
-    height: 0,
-    gender: '',
-    weight: 0,
-    activity: '',
-    email: '',
-    name: '',
+    age: null,
+    height: null,
+    gender: null,
+    weight: null,
+    activity: null,
+    email: null,
+    name: null,
   });
-  useEffect(() => {
+  useEffect(() => {}, [userData]);
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+  const handleStore = () => {
+    axios
+      .post('https://fitlinez-backend.herokuapp.com/cta', {
+        userData,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {});
+  };
+
+  const handleSubmit = () => {
     axios
       .request({
         method: 'GET',
@@ -34,60 +54,40 @@ export default function Calories() {
       })
       .then(function (response) {
         setResult(response.data.data);
+        handleStore();
       })
       .catch(function (error) {
         console.error(error);
       });
-  }, [userData]);
-
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
   };
-  useEffect(
-    (result) => {
-      axios
-        .post('https://fitlinez-backend.herokuapp.com/cta', {
-          userData,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((e) => {});
-    },
-    [result]
-  );
   return (
     <div className="container">
       <div className="row">
         <div className="col-sm-6">
           {result && (
-            <div class="container mt-5">
-              <div class="notice notice-success h5">
+            <div className="container mt-5">
+              <div className="notice notice-success h5">
                 <strong>کالری تقریبی متابولیسم پایه </strong>
                 <span className="float-left badge badge-primary">
                   {Math.round(result.BMR)}
                 </span>
               </div>
-              <div class="notice notice-info h5">
+              <div className="notice notice-info h5">
                 <strong>کالری تقریبی تثبیت وزن</strong>
                 <span className="float-left badge badge-primary">
                   {Math.round(result.goals['maintain weight'])}
                 </span>
               </div>
-              <div class="notice notice-danger h5">
+              <div className="notice notice-danger h5">
                 <strong>کالری تقریبی برای کاهش وزن ۱ کیلو در هفته</strong>
                 <span className="float-left badge badge-primary">
                   {Math.round(result.goals['Extreme weight loss']['calory'])}
                 </span>
-                <div class="notice notice-danger text-danger">
+                <div className="notice notice-danger text-danger">
                   توصیه میشود یک فرد بالغ کمتر از ۱۲۰۰ کالری در روز مصرف نکند
                 </div>
               </div>
-              <div class="notice notice-warning h5">
+              <div className="notice notice-warning h5">
                 <strong>کالری تقریبی برای کاهش ۲۵۰ گرم در هفته</strong>
 
                 <span className="float-left badge badge-primary">
@@ -95,7 +95,7 @@ export default function Calories() {
                 </span>
               </div>
 
-              <div class="notice notice-sm h5">
+              <div className="notice notice-sm h5">
                 <strong>نکته:</strong> برای محاسبه دقیقتر به متخصص تغدیه مراجعه
                 کنید
               </div>
@@ -107,7 +107,7 @@ export default function Calories() {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
-              alert('کالری پایه کمتر از ۱۲۰۰ برای بزرگ');
+              handleSubmit();
             }}>
             <Input required name="name" label="*نام" onChange={handleInput} />
             <Input
@@ -132,7 +132,7 @@ export default function Calories() {
                 name="gender"
                 onChange={handleInput}
                 value={userData.gender}>
-                <option selected></option>
+                <option defaultValue></option>
                 <option value="female">خانم</option>
                 <option value="male">آقا</option>
               </select>
@@ -144,7 +144,7 @@ export default function Calories() {
                 name="activity"
                 onChange={handleInput}
                 value={userData.activity}>
-                <option selected></option>
+                <option defaultValue></option>
                 <option value="level_1">بدون تحرک</option>
                 <option value="level_2">یک تا سه روز در هفته</option>
                 <option value="level_3">چهار تا پنج روز در هفته</option>
@@ -156,12 +156,12 @@ export default function Calories() {
               </select>
             </div>
             <div className="form-group">
-              {/* <button
+              <button
                 className="btn btn-primary btn-block"
-                onClick={handleClick}
+                // onClick={handleClick}
                 type="submit">
                 محاسبه
-              </button> */}
+              </button>
             </div>
           </form>
         </div>
