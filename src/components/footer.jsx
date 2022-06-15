@@ -23,16 +23,16 @@ const Footer = () => {
               style={{ direction: 'ltr' }}
               role="group"
               aria-label="Basic example">
-              <Link to="/bmi" type="button" className="btn btn-outline-dark">
+              <Link to="/bmi" type="button" className="btn btn-outline-light">
                 محاسبه BMI
               </Link>
               <Link
                 to="/calories"
                 type="button"
-                className="btn btn-outline-dark">
+                className="btn btn-outline-light">
                 محاسبه کالری نقصان
               </Link>
-              <Link to="/bfp" type="button" className="btn btn-outline-dark">
+              <Link to="/bfp" type="button" className="btn btn-outline-light">
                 محاسبه چربی بدن{' '}
               </Link>
             </div>
