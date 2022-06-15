@@ -17,6 +17,26 @@ const Footer = () => {
         <div
           className="row"
           style={{ direction: 'rtl', background: '#00B4E5' }}>
+          <div className="col-md-4 text-light">
+            <div
+              className="btn-group center"
+              style={{ direction: 'ltr' }}
+              role="group"
+              aria-label="Basic example">
+              <Link to="/bmi" type="button" className="btn btn-outline-dark">
+                محاسبه BMI
+              </Link>
+              <Link
+                to="/calories"
+                type="button"
+                className="btn btn-outline-dark">
+                محاسبه کالری نقصان
+              </Link>
+              <Link to="/bfp" type="button" className="btn btn-outline-dark">
+                محاسبه چربی بدن{' '}
+              </Link>
+            </div>
+          </div>
           <div className="col-md-4">
             <section className="mb-4">
               <a
@@ -51,26 +71,6 @@ const Footer = () => {
           </div>
           <div className="col-md-4 text-light">
             © {new Date().getFullYear()} Copyright: GODIET OÜ
-          </div>
-          <div className="col-md-4 text-light">
-            <div
-              className="btn-group center"
-              style={{ direction: 'ltr' }}
-              role="group"
-              aria-label="Basic example">
-              <Link to="/bmi" type="button" className="btn btn-outline-dark">
-                محاسبه BMI
-              </Link>
-              <Link
-                to="/calories"
-                type="button"
-                className="btn btn-outline-dark">
-                محاسبه کالری نقصان
-              </Link>
-              <Link to="/bfp" type="button" className="btn btn-outline-dark">
-                محاسبه چربی بدن{' '}
-              </Link>
-            </div>
           </div>
         </div>
       </footer>
