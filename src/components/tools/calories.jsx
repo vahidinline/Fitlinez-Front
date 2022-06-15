@@ -78,7 +78,7 @@ export default function Calories() {
                   {Math.round(result.goals['maintain weight'])}
                 </span>
               </div>
-              <div className="notice notice-danger h5">
+              {/* <div className="notice notice-danger h5">
                 <strong>کالری تقریبی برای کاهش وزن ۱ کیلو در هفته</strong>
                 <span className="float-left badge badge-primary">
                   {Math.round(result.goals['Extreme weight loss']['calory'])}
@@ -86,7 +86,7 @@ export default function Calories() {
                 <div className="notice notice-danger text-danger">
                   توصیه میشود یک فرد بالغ کمتر از ۱۲۰۰ کالری در روز مصرف نکند
                 </div>
-              </div>
+              </div> */}
               <div className="notice notice-warning h5">
                 <strong>کالری تقریبی برای کاهش ۲۵۰ گرم در هفته</strong>
 
