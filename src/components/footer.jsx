@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className="container-fluid fixed-bottom" style={{ direction: 'ltr' }}>
+    <div className="container-fluid" style={{ direction: 'ltr' }}>
       <footer
         id="sticky-footer"
         className=" text-center text-lg-start flex-shrink-0 ">
