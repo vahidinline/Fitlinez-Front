@@ -4,7 +4,7 @@ import axios from 'axios';
 import './style.css';
 export default function Calories() {
   const [result, setResult] = useState('');
-
+  const [show, setShow] = useState(true);
   const [userData, setUserData] = useState({
     age: null,
     height: null,
@@ -29,7 +29,7 @@ export default function Calories() {
         userData,
       })
       .then((res) => {
-        console.log(res);
+        setShow(false);
       })
       .catch((e) => {});
   };
@@ -103,64 +103,75 @@ export default function Calories() {
         </div>
 
         <div className="col-sm-6 mt-3">
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              handleSubmit();
-            }}>
-            <Input required name="name" label="*نام" onChange={handleInput} />
-            <Input
-              required
-              name="email"
-              label="*ایمیل"
-              type="email"
-              onChange={handleInput}
-            />
-            <Input required name="weight" label="*وزن" onChange={handleInput} />
-            <Input
-              required
-              name="age"
-              label="*سن"
-              value={userData.age}
-              onChange={handleInput}
-            />
-            <Input required name="height" label="*قد" onChange={handleInput} />
-            <div className="form-group">
-              <label htmlFor="inputState">*جنسیت</label>
-              <select
-                className="form-control"
-                name="gender"
+          {show && (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}>
+              <Input required name="name" label="*نام" onChange={handleInput} />
+              <Input
+                required
+                name="email"
+                label="*ایمیل"
                 onChange={handleInput}
-                value={userData.gender}>
-                <option defaultValue></option>
-                <option value="female">خانم</option>
-                <option value="male">آقا</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputState">*میزان فعالیت </label>
-              <select
-                className="form-control"
-                name="activity"
+              />
+              <Input
+                required
+                name="weight"
+                label="*وزن"
                 onChange={handleInput}
-                value={userData.activity}>
-                <option defaultValue></option>
-                <option value="level_1">بدون تحرک</option>
-                <option value="level_2">یک تا سه روز در هفته</option>
-                <option value="level_3">چهار تا پنج روز در هفته</option>
-                <option value="level_4">
-                  ورزش روزانه / ورزش شدید سه تا چهار روز در هفته
-                </option>
-                <option value="level_5">ورزش شدید تقریبا هر روز</option>
-                <option value="level_6">ورزش شدید روزانه/ کار فیزیکی</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <button className="btn btn-primary btn-block" type="submit">
-                محاسبه
-              </button>
-            </div>
-          </form>
+              />
+              <Input
+                required
+                name="age"
+                label="*سن"
+                value={userData.age}
+                onChange={handleInput}
+              />
+              <Input
+                required
+                name="height"
+                label="*قد"
+                onChange={handleInput}
+              />
+              <div className="form-group">
+                <label htmlFor="inputState">*جنسیت</label>
+                <select
+                  className="form-control"
+                  name="gender"
+                  onChange={handleInput}
+                  value={userData.gender}>
+                  <option defaultValue></option>
+                  <option value="female">خانم</option>
+                  <option value="male">آقا</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="inputState">*میزان فعالیت </label>
+                <select
+                  className="form-control"
+                  name="activity"
+                  onChange={handleInput}
+                  value={userData.activity}>
+                  <option defaultValue></option>
+                  <option value="level_1">بدون تحرک</option>
+                  <option value="level_2">یک تا سه روز در هفته</option>
+                  <option value="level_3">چهار تا پنج روز در هفته</option>
+                  <option value="level_4">
+                    ورزش روزانه / ورزش شدید سه تا چهار روز در هفته
+                  </option>
+                  <option value="level_5">ورزش شدید تقریبا هر روز</option>
+                  <option value="level_6">ورزش شدید روزانه/ کار فیزیکی</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <button className="btn btn-primary btn-block" type="submit">
+                  محاسبه
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </div>
