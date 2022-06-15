@@ -25,7 +25,7 @@ export default function Calories() {
   };
   const handleStore = () => {
     axios
-      .post('https://fitlinez-backend.herokuapp.com/cta', {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/cta`, {
         userData,
       })
       .then((res) => {
@@ -38,7 +38,7 @@ export default function Calories() {
     axios
       .request({
         method: 'GET',
-        url: 'https://fitness-calculator.p.rapidapi.com/dailycalorie',
+        url: process.env.REACT_APP_API_URL_CALORIES,
         params: {
           age: parseInt(userData.age),
           gender: userData.gender,
@@ -48,8 +48,7 @@ export default function Calories() {
         },
         headers: {
           'X-RapidAPI-Host': 'fitness-calculator.p.rapidapi.com',
-          'X-RapidAPI-Key':
-            '27429b439dmshcf048a7e893b633p10a32ajsn1c3ee8db4371',
+          'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
         },
       })
       .then(function (response) {
@@ -114,6 +113,7 @@ export default function Calories() {
               required
               name="email"
               label="*ایمیل"
+              type="email"
               onChange={handleInput}
             />
             <Input required name="weight" label="*وزن" onChange={handleInput} />
@@ -149,17 +149,14 @@ export default function Calories() {
                 <option value="level_2">یک تا سه روز در هفته</option>
                 <option value="level_3">چهار تا پنج روز در هفته</option>
                 <option value="level_4">
-                  ورزش روزانه / ورزش شدید سه تا جهار روز در هفته
+                  ورزش روزانه / ورزش شدید سه تا چهار روز در هفته
                 </option>
                 <option value="level_5">ورزش شدید تقریبا هر روز</option>
                 <option value="level_6">ورزش شدید روزانه/ کار فیزیکی</option>
               </select>
             </div>
             <div className="form-group">
-              <button
-                className="btn btn-primary btn-block"
-                // onClick={handleClick}
-                type="submit">
+              <button className="btn btn-primary btn-block" type="submit">
                 محاسبه
               </button>
             </div>
