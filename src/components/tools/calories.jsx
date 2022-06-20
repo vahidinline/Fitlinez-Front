@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import Input from '../input';
 import axios from 'axios';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 export default function Calories() {
+  let navigate = useNavigate();
+  const UserContext = createContext();
   const [result, setResult] = useState('');
   const [show, setShow] = useState(true);
   const [userData, setUserData] = useState({
-    age: null,
-    height: null,
-    gender: null,
-    weight: null,
-    activity: null,
-    email: null,
-    name: null,
+    age: 30,
+    height: 170,
+    gender: 'female',
+    weight: 60,
+    activity: 'level_2',
+    email: '',
+    name: 'null',
   });
   useEffect(() => {}, [userData]);
 
@@ -54,15 +57,17 @@ export default function Calories() {
       .then(function (response) {
         setResult(response.data.data);
         handleStore();
+        //navigate('/result');
       })
       .catch(function (error) {
         console.error(error);
       });
   };
+  console.log(result);
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-6">
+        <div className="col-sm">
           {result && (
             <div className="container mt-5">
               <div className="notice notice-success h5">
@@ -77,15 +82,7 @@ export default function Calories() {
                   {Math.round(result.goals['maintain weight'])}
                 </span>
               </div>
-              {/* <div className="notice notice-danger h5">
-                <strong>کالری تقریبی برای کاهش وزن ۱ کیلو در هفته</strong>
-                <span className="float-left badge badge-primary">
-                  {Math.round(result.goals['Extreme weight loss']['calory'])}
-                </span>
-                <div className="notice notice-danger text-danger">
-                  توصیه میشود یک فرد بالغ کمتر از ۱۲۰۰ کالری در روز مصرف نکند
-                </div>
-              </div> */}
+
               <div className="notice notice-warning h5">
                 <strong>کالری تقریبی برای کاهش ۲۵۰ گرم در هفته</strong>
 
@@ -101,7 +98,6 @@ export default function Calories() {
             </div>
           )}
         </div>
-
         <div className="col-sm-6 mt-3">
           {show && (
             <form
@@ -117,22 +113,34 @@ export default function Calories() {
                 onChange={handleInput}
               />
               <Input
+                type="range"
                 required
                 name="weight"
-                label="*وزن"
+                label={`وزن : ${userData.weight}`}
+                step="0.5"
+                min="30"
+                max="170"
                 onChange={handleInput}
               />
               <Input
+                type="range"
                 required
                 name="age"
-                label="*سن"
+                label={`سن : ${userData.age}`}
+                step="1"
+                min="10"
+                max="100"
                 value={userData.age}
                 onChange={handleInput}
               />
               <Input
+                type="range"
                 required
                 name="height"
-                label="*قد"
+                label={`قد : ${userData.height}`}
+                step="0.5"
+                min="130"
+                max="220"
                 onChange={handleInput}
               />
               <div className="form-group">

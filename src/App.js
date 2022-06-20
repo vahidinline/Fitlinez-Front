@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,29 +6,30 @@ import {
   Link,
   Navigate,
   Outlet,
-} from "react-router-dom";
-import axios from "axios";
-import Header from "./components/header";
-import Login from "./components/userFlow/logIn";
-import Signup from "./components/userFlow/signUp";
-import Home from "./components/Home";
-import "./App.css";
-import AdminHome from "./components/admin";
-import PriceList from "./components/price";
-import CreateHome from "./components/dashboard/homePageContent";
-import Profile from "./components/userFlow/profile";
-import About from "./components/about";
-import Footer from "./components/footer";
-import BMI from "./components/tools/BMI";
+} from 'react-router-dom';
+import axios from 'axios';
+import Header from './components/header';
+import Login from './components/userFlow/logIn';
+import Signup from './components/userFlow/signUp';
+import Home from './components/Home';
+import './App.css';
+import AdminHome from './components/admin';
+import PriceList from './components/price';
+import CreateHome from './components/dashboard/homePageContent';
+import Profile from './components/userFlow/profile';
+import About from './components/about';
+import Footer from './components/footer';
+import BMI from './components/tools/BMI';
 import AuthContextProvider, {
   useAuth,
-} from "./components/userFlow/authContent";
-import { auth } from "../src/db/firebase";
-import ForgotPassword from "./components/userFlow/forgotPassword";
-import UpdateProfile from "./components/userFlow/updateProfile";
-import Calories from "./components/tools/calories";
-import Bfp from "./components/tools/bfp";
-import Macros from "./components/tools/macros";
+} from './components/userFlow/authContent';
+import { auth } from '../src/db/firebase';
+import ForgotPassword from './components/userFlow/forgotPassword';
+import UpdateProfile from './components/userFlow/updateProfile';
+import Calories from './components/tools/calories';
+import Bfp from './components/tools/bfp';
+import Macros from './components/tools/macros';
+import Result from './components/tools/result';
 
 export default function App() {
   // console.log(auth.currentUser);
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/calories" element={<Calories />} />
           <Route path="/bfp" element={<Bfp />} />
           <Route path="/macros" element={<Macros />} />
+          <Route path="/result" element={<Result />} />
           <Route path="/" element={<PrivateOutlet />}>
             <Route path="/admin" element={<AdminHome />} />
             <Route path="/create" element={<CreateHome />} />
@@ -63,6 +65,5 @@ export default function App() {
         <Footer />
       </Router>
     </AuthContextProvider>
-
   );
 }
