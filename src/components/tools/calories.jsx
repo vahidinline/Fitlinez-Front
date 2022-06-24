@@ -2,10 +2,11 @@ import React, { useState, useEffect, createContext } from 'react';
 import Input from '../input';
 import axios from 'axios';
 import './style.css';
-import { useNavigate } from 'react-router-dom';
+const usercontex = createContext(null);
+// import { useNavigate } from 'react-router-dom';
 export default function Calories() {
-  let navigate = useNavigate();
-  const UserContext = createContext();
+  // let navigate = useNavigate();
+  // const UserContext = createContext();
   const [result, setResult] = useState('');
   const [show, setShow] = useState(true);
   const [userData, setUserData] = useState({

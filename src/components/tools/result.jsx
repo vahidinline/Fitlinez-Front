@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Result = ({ result }) => {
   return (
     <div className="container">

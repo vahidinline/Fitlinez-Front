@@ -1,9 +1,13 @@
-import React from "react";
-import { Container, Row, Col, Form, Button, Modal } from "react-bootstrap";
-
+import React from 'react';
+import { Container, Row, Col, Form, Button, Modal } from 'react-bootstrap';
+import axios from 'axios';
 const ModalView = (props) => {
+  const handleUpdate = () => {
+    props.handleClose();
+  };
+  console.log(props.modalData._id);
   return (
-    <Modal dialogClassName='modal-90w' show={props.show}>
+    <Modal dialogClassName="modal-90w" show={props.show}>
       <Modal.Header>
         <Modal.Title>جزییات</Modal.Title>
       </Modal.Header>
@@ -12,51 +16,32 @@ const ModalView = (props) => {
           <Row>
             <Col>
               <Form.Label>نام</Form.Label>
-              <Form.Control type='text' value={props.modalData.name} disabled />
+              <Form.Control type="text" value={props.modalData.user.name} />
 
-              <Form.Label>تاریخ عضویت</Form.Label>
-              <Form.Control type='text' value={props.modalData.date} disabled />
-              <Form.Label>سن</Form.Label>
-              <Form.Control type='text' value={props.modalData.age} disabled />
-              <Form.Label>توضیحات</Form.Label>
-              <Form.Control
-                type='text'
-                value={props.modalData.comment}
-                disabled
-              />
+              <Form.Label>جنسیت </Form.Label>
+              <Form.Control type="text" value={props.modalData.user.gender} />
+              <Form.Label>قد</Form.Label>
+              <Form.Control type="text" value={props.modalData.user.height} />
+              <Form.Label>وزن</Form.Label>
+              <Form.Control type="text" value={props.modalData.user.weight} />
             </Col>
             <Col>
               <Form.Label>میزان فعالیت</Form.Label>
-              <Form.Control
-                type='text'
-                value={props.modalData.activity}
-                disabled
-              />
+              <Form.Control type="text" value={props.modalData.user.activity} />
 
-              <Form.Label>جنسیت</Form.Label>
-              <Form.Control
-                type='text'
-                value={props.modalData.gender}
-                disabled
-              />
-              <Form.Label>وزن</Form.Label>
-              <Form.Control
-                type='text'
-                value={props.modalData.weight}
-                disabled
-              />
-              <Form.Label>قد</Form.Label>
-              <Form.Control
-                type='text'
-                value={props.modalData.height}
-                disabled
-              />
+              <Form.Label>سن</Form.Label>
+              <Form.Control type="text" value={props.modalData.user.age} />
+              <Form.Label>سن</Form.Label>
+              <Form.Control type="text" value={props.modalData.user.age} />
             </Col>
           </Row>
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='secondary' onClick={props.handleClose}>
+        <Button variant="primary" onClick={handleUpdate}>
+          Update
+        </Button>
+        <Button variant="secondary" onClick={props.handleClose}>
           Close
         </Button>
       </Modal.Footer>

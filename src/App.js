@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { createContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,6 +7,7 @@ import {
   Navigate,
   Outlet,
 } from 'react-router-dom';
+
 import axios from 'axios';
 import Header from './components/header';
 import Login from './components/userFlow/logIn';
@@ -30,6 +31,7 @@ import Calories from './components/tools/calories';
 import Bfp from './components/tools/bfp';
 import Macros from './components/tools/macros';
 import Result from './components/tools/result';
+const Usercontex = createContext(null);
 
 export default function App() {
   // console.log(auth.currentUser);
@@ -40,29 +42,31 @@ export default function App() {
   return (
     <AuthContextProvider>
       <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/bmi" element={<BMI />} />
-          <Route path="/calories" element={<Calories />} />
-          <Route path="/bfp" element={<Bfp />} />
-          <Route path="/macros" element={<Macros />} />
-          <Route path="/result" element={<Result />} />
-          <Route path="/" element={<PrivateOutlet />}>
+        <Usercontex.Provider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/bmi" element={<BMI />} />
+            <Route path="/calories" element={<Calories />} />
+            <Route path="/bfp" element={<Bfp />} />
+            <Route path="/macros" element={<Macros />} />
+            <Route path="/result" element={<Result />} />
             <Route path="/admin" element={<AdminHome />} />
-            <Route path="/create" element={<CreateHome />} />
-          </Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/admin" element={<AdminHome />} />
-          <Route path="/price" element={<PriceList />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/updateProfile" element={<UpdateProfile />} />
-          <Route path="*" element={<p>There's nothing here: 404!</p>} />
-        </Routes>
-        <Footer />
+            <Route path="/" element={<PrivateOutlet />}>
+              <Route path="/create" element={<CreateHome />} />
+            </Route>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/admin" element={<AdminHome />} />
+            <Route path="/price" element={<PriceList />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/updateProfile" element={<UpdateProfile />} />
+            <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          </Routes>
+          <Footer />
+        </Usercontex.Provider>
       </Router>
     </AuthContextProvider>
   );

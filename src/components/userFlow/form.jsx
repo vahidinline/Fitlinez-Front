@@ -40,110 +40,106 @@ export default function Form() {
       });
   }
   return (
-    <div className='container'>
-      <div className='row'>
-        <div className='col-sm'>
-          <h1 className='m-5 text-center'>فرم اطلاعات کاربری</h1>
-          <span className='text-center text-warning'></span>
+    <div className="container">
+      <div className="row">
+        <div className="col-sm">
+          <h1 className="m-5 text-center">فرم اطلاعات کاربری</h1>
+          <span className="text-center text-warning"></span>
           <form
             onSubmit={async (e) => {
               e.preventDefault();
               updateUser(userData).then((res) => {
-                console.log(res).catch((e) => {
+                alert(res).catch((e) => {
                   alert(e);
                 });
               });
-            }}
-          >
+            }}>
             <Input
               required
-              name='name'
-              label='*نام'
+              name="name"
+              label="*نام"
               value={userData.name}
               onChange={handleInput}
             />
             <Input
               required
-              name='email'
-              label='*ایمیل'
+              name="email"
+              label="*ایمیل"
               value={userData.email}
               onChange={handleInput}
             />
             <Input
               required
-              name='age'
-              label='*سن'
+              name="age"
+              label="*سن"
               value={userData.age}
               onChange={handleInput}
             />
             <Input
               required
-              name='weight'
-              label='*وزن'
+              name="weight"
+              label="*وزن"
               value={userData.weight}
               onChange={handleInput}
             />
             <Input
               required
-              name='height'
-              label='*قد'
+              name="height"
+              label="*قد"
               value={userData.height}
               onChange={handleInput}
             />
-            <div className='form-group'>
-              <label Htmlfor='inputState'>*جنسیت</label>
+            <div className="form-group">
+              <label Htmlfor="inputState">*جنسیت</label>
               <select
-                className='form-control'
-                name='gender'
+                className="form-control"
+                name="gender"
                 onChange={handleInput}
-                value={userData.gender}
-              >
+                value={userData.gender}>
                 <option selected></option>
-                <option value='خانم'>خانم</option>
-                <option value='آقا'>آقا</option>
+                <option value="خانم">خانم</option>
+                <option value="آقا">آقا</option>
               </select>
             </div>
-            <div className='form-group'>
-              <label Htmlfor='inputState'>*هدف تناسب اندامی</label>
+            <div className="form-group">
+              <label Htmlfor="inputState">*هدف تناسب اندامی</label>
               <select
-                className='form-control'
-                name='target'
+                className="form-control"
+                name="target"
                 onChange={handleInput}
-                value={userData.target}
-              >
+                value={userData.target}>
                 <option selected></option>
-                <option value='بادی کامپوزیشن'>بادی کامپوزیشن</option>
-                <option value='افزایش وزن'>افزایش وزن</option>
-                <option value='کاهش وزن'>کاهش وزن</option>
+                <option value="بادی کامپوزیشن">بادی کامپوزیشن</option>
+                <option value="افزایش وزن">افزایش وزن</option>
+                <option value="کاهش وزن">کاهش وزن</option>
               </select>
             </div>
-            <div className='form-group'>
-              <label Htmlfor='inputState'>*میزان فعالیت </label>
+            <div className="form-group">
+              <label Htmlfor="inputState">*میزان فعالیت </label>
               <select
-                className='form-control'
-                name='activity'
+                className="form-control"
+                name="activity"
                 onChange={handleInput}
-                value={userData.activity}
-              >
+                value={userData.activity}>
                 <option selected></option>
-                <option value='زیر سه روز در هفته'>زیر سه روز در هفته</option>
-                <option value='سه تا پنج روز در هفته'>
+                <option value="زیر سه روز در هفته">زیر سه روز در هفته</option>
+                <option value="سه تا پنج روز در هفته">
                   سه تا پنج روز در هفته
                 </option>
-                <option value='بیش از پنج روز در هفته'>
+                <option value="بیش از پنج روز در هفته">
                   بیش از پنج روز در هفته
                 </option>
               </select>
             </div>
 
             <Input
-              name='comment'
-              label='*هدف شما از ثبت نام در این دوره چیست '
+              name="comment"
+              label="*هدف شما از ثبت نام در این دوره چیست "
               value={userData.comment}
               onChange={handleInput}
             />
-            <div className='form-group'>
-              <button className='btn btn-primary btn-block' type='submit'>
+            <div className="form-group">
+              <button className="btn btn-primary btn-block" type="submit">
                 ثبت اطلاعات
               </button>
             </div>
