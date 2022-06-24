@@ -22,34 +22,33 @@ const Package = (props) => {
   //--------End Rial Handle Payment
 
   return (
-    <div className='accordion' id='accordionExample'>
-      <div className='card'>
+    <div className="accordion" id="accordionExample">
+      <div className="card">
         <sup>
-          <span class='badge badge-success'>{props.featured}</span>
+          <span class="badge badge-success">{props.featured}</span>
         </sup>
-        <div className='card-header' id={'heading' + props.id}>
-          <h2 className='mb-0'>
+        <div className="card-header" id={'heading' + props.id}>
+          <h2 className="mb-0">
             <button
-              className='btn btn-block'
-              type='button'
-              data-toggle='collapse'
+              className="btn btn-block"
+              type="button"
+              data-toggle="collapse"
               data-target={'#collapse' + props.id}
-              aria-expanded='false'
-              aria-controls={'collapse' + props.id}
-            >
+              aria-expanded="false"
+              aria-controls={'collapse' + props.id}>
               <span>
-                <h4 className='text-decoration-none'>
+                <h4 className="text-decoration-none">
                   {props.name}/{props.description} -
-                  <span className='font-weight-bold'>
+                  <span className="font-weight-bold">
                     {props.sign} {props.price}
                   </span>
                 </h4>
               </span>
 
-              <h3 className='font-weight-bold'></h3>
+              <h3 className="font-weight-bold"></h3>
               <br />
 
-              <del className='h3 font-weight-bold text-secondary'>
+              <del className="h3 font-weight-bold text-secondary">
                 {props.oldPrice}
               </del>
             </button>
@@ -58,12 +57,11 @@ const Package = (props) => {
 
         <div
           id={'collapse' + props.id}
-          className='collapse show'
+          className="collapse show"
           aria-labelledby={'heading' + props.id}
-          data-parent='#accordionExample'
-        >
-          <div className='card-body'>
-            <ul className='list-unstyled' style={{ paddingRight: '0px' }}>
+          data-parent="#accordionExample">
+          <div className="card-body">
+            <ul className="list-unstyled" style={{ paddingRight: '0px' }}>
               <li>{props.line1}</li>
               <li>{props.line2}</li>
               <li>{props.line3}</li>
@@ -72,10 +70,9 @@ const Package = (props) => {
 
             <a
               href={props.url}
-              type='button'
-              className='btn btn-outline-success mb-3'
-            >
-              Order now
+              type="button"
+              className="btn btn-outline-success mb-3">
+              {props.buttonLabel}
             </a>
 
             {/* {!currentUser && (
