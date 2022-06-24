@@ -29,56 +29,56 @@ const AdminHome = () => {
       .finally(d.preventDefault());
   };
   return (
-    // <Container>
-    //   <h1>List of Members - {data.length}</h1>
-    //   <Table striped="columns" hover>
-    //     <thead className="thead-dark">
-    //       <tr>
-    //         <th className="col">ردیف</th>
-    //         <th className="col">id</th>
-    //         <th className="col">تاریخ</th>
-    //         <th className="col">نام</th>
-    //         <th>مشاهده جزییات</th>
-    //         <th>delete</th>
-    //       </tr>
-    //     </thead>
+    <Container>
+      {/* <h1>List of Members - {data.length}</h1>
+      <Table striped="columns" hover>
+        <thead className="thead-dark">
+          <tr>
+            <th className="col">ردیف</th>
+            <th className="col">id</th>
+            <th className="col">تاریخ</th>
+            <th className="col">نام</th>
+            <th>مشاهده جزییات</th>
+            <th>delete</th>
+          </tr>
+        </thead>
 
-    //     {data?.map((d, i) => (
-    //       <tbody>
-    //         <tr>
-    //           <td>{i + 1}</td>
-    //           <td>{d._id}</td>
-    //           <td>{d.user?.name}</td>
-    //           <td>{d.user?.email}</td>
+        {data?.map((d, i) => (
+          <tbody>
+            <tr>
+              <td>{i + 1}</td>
+              <td>{d._id}</td>
+              <td>{d.user?.name}</td>
+              <td>{d.user?.email}</td>
 
-    //           <td>
-    //             <button
-    //               className="btn btn-success"
-    //               onClick={() => handleShow(d)}
-    //               variant="primary">
-    //               Details
-    //             </button>
-    //           </td>
-    //           <td>
-    //             <button
-    //               className="btn btn-danger"
-    //               onClick={() => handleDelete(d)}
-    //               variant="primary">
-    //               Delete
-    //             </button>
-    //           </td>
-    //         </tr>
-    //       </tbody>
-    //     ))}
-    //   </Table>
-    //   {modalData && (
-    //     <ModalView
-    //       modalData={modalData}
-    //       show={show}
-    //       handleClose={handleClose}
-    //     />
-    //   )}
-    // </Container>
+              <td>
+                <button
+                  className="btn btn-success"
+                  onClick={() => handleShow(d)}
+                  variant="primary">
+                  Details
+                </button>
+              </td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(d)}
+                  variant="primary">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        ))}
+      </Table>
+      {modalData && (
+        <ModalView
+          modalData={modalData}
+          show={show}
+          handleClose={handleClose}
+        />
+      )} */}
+    </Container>
   );
 };
 
