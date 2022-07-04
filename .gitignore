@@ -1,1 +1,4 @@
 .env.*
+node_modules
+src/components/admin/index.jsx
+build/manifest.json

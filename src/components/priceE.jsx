@@ -50,19 +50,6 @@ const PriceE = () => {
         disabled="false"
         buttonLabel="خرید"
       />
-      <Package
-        id="Four"
-        name="ورزش خصوصی"
-        price="۲،۱۰۰،۰۰۰"
-        description="یک ماهه ۱۲ جلسه"
-        url=""
-        sign="تومان"
-        line1="طراحی برنامه تمرینی توسط مربی بدنسازی بصورت اختصاصی با توجه به هدف و جسمانی"
-        featured
-        oldPrice
-        disabled="true"
-        buttonLabel="خرید"
-      />
     </>
   );
 };

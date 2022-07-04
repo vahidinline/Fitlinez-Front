@@ -30,7 +30,7 @@ const AdminHome = () => {
   };
   return (
     <Container>
-      {/* <h1>List of Members - {data.length}</h1>
+      <h1>List of Members - {data.length}</h1>
       <Table striped="columns" hover>
         <thead className="thead-dark">
           <tr>
@@ -77,7 +77,7 @@ const AdminHome = () => {
           show={show}
           handleClose={handleClose}
         />
-      )} */}
+      )}
     </Container>
   );
 };

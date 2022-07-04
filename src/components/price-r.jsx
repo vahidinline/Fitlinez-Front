@@ -40,16 +40,6 @@ const PriceR = () => {
         disabled="false"
         buttonLabel="Get started"
       />
-      <Package
-        id="Four"
-        name="Private Workout"
-        price="70"
-        description="Monthly, 12 sessions"
-        url=""
-        sign="€"
-        featured
-        disabled="true"
-      />
     </>
   );
 };
