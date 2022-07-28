@@ -7,7 +7,7 @@ const PriceR = () => {
       <Package
         id="One"
         name="Nutrition Consultation"
-        price="17"
+        price="25"
         description="30-minute Session"
         url="https://buy.stripe.com/6oEbJY53mf3MdZ68wI"
         sign="€"
