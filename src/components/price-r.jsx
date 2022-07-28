@@ -9,7 +9,7 @@ const PriceR = () => {
         name="Nutrition Consultation"
         price="17"
         description="30-minute Session"
-        url="https://buy.stripe.com/dR6aFU0N62h0aMU8wB"
+        url="https://buy.stripe.com/6oEbJY53mf3MdZ68wI"
         sign="€"
         featured
         oldPrice
